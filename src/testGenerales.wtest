@@ -1,0 +1,41 @@
+import ropa.*
+
+
+describe "ignoren estos tests, son horribles :)"{
+	const promocion100P = new Promocion(descuento = 100)
+	const camisaConPromocion = new Prenda(precioBase=250,tipo="camisa",estado = promocion100P)
+	const sacoNuevo =new Prenda(precioBase=600,tipo="saco",estado =nueva)
+	const tarjeta6Cuotas = new Tarjeta(cuotas=6,coeficiente=0.5)
+	const ventaCamisaSacoE = new Venta(prendas= [camisaConPromocion,sacoNuevo],fecha=new Date(),tipo=efectivo)
+	const ventaCamisaSacoT = new Venta(prendas= [camisaConPromocion,sacoNuevo],fecha=new Date(),tipo=tarjeta6Cuotas)
+	
+	test "promocion modifica precio base"{
+		assert.equals(100, promocion100P.modificacion(200))
+	}
+	
+	test "liquidacion modifica precio base"{
+		assert.equals(100, liquidacion.modificacion(200))
+	}
+	
+	test "camisa calcula el precio correcto"{
+		assert.equals(150,camisaConPromocion.precio())
+	}
+	
+	test "calculo ganancia venta efectivo correcto"{
+		assert.equals(750,ventaCamisaSacoE.ganancia())
+	}
+	test "calculo ganancia venta tarjeta correcto"{
+		assert.equals(760.5,ventaCamisaSacoT.ganancia())
+	}
+	
+	test "ganancias dia"{
+		caja.vender([camisaConPromocion,sacoNuevo],tarjeta6Cuotas)
+		caja.vender([camisaConPromocion,sacoNuevo],efectivo)
+		assert.equals(760.5+750, caja.gananciasDia(new Date()))
+	}
+	
+	
+	
+	
+	
+}
