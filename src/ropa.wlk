@@ -24,12 +24,13 @@ class Venta {
 
 class TipoPago {
 
-	method precioFinal(prendas) = prendas.sum({ prenda => prenda.precio() })
+	method precioFinal(prendas) = self.modificacion(prendas.sum({ prenda => prenda.precio() })) 
 
+	method modificacion(precio)
 }
 
 object efectivo inherits TipoPago {
-
+	override method modificacion(precio)= precio
 }
 
 class Tarjeta inherits TipoPago {
@@ -37,7 +38,7 @@ class Tarjeta inherits TipoPago {
 	var cuotas
 	var coeficiente // no entiendo muy bien que es esto
 
-	override method precioFinal(prendas) = cuotas * coeficiente + super(prendas) * 1.01
+	override method modificacion(precio) = cuotas * coeficiente + precio * 1.01
 
 }
 
