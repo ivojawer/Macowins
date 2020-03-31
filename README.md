@@ -1,6 +1,10 @@
 # Macowins
 ### Diagrama de clases
 ![diagrama de clases](dc.jpg)
+### Requisitos
+- Registrar una venta
+- Consultar ganancias diarias
+- Consultar precio y tipo de prenda
 ### Justificaciones
 #### Tipos de prenda como strings
 Podrian haber sido objetos, pero al no tener ninguna otra reposonsabilidad no me parecia que mostrar un texto lo justifijase.
